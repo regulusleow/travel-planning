@@ -1,1 +1,1 @@
-# -travel-planning
+# travel-planning
