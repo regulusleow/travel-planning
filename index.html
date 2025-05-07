@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云南一日游行程表</title>
+    <meta name="description" content="云南昆明一日游行程表，包含石林景区、云南民族村、翠湖公园等景点，适合打印随身携带">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 打印友好的设计 */
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .a4-container {
+            width: 210mm;
+            min-height: 297mm;
+            height: auto;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: visible;
+            padding: 10mm;
+            box-sizing: border-box;
+        }
+        
+        /* 内容样式 */
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e67e22;
+        }
+        
+        .title {
+            font-size: 28px;
+            color: #e67e22;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #777;
+            margin: 5px 0;
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            color: #e67e22;
+        }
+        
+        .decoration.left {
+            left: 20px;
+            top: 10px;
+        }
+        
+        .decoration.right {
+            right: 20px;
+            top: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .weather-info, .travel-tips {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+            color: #e67e22;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .weather-details, .tips-content {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .weather-item, .tip-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .itinerary {
+            margin-bottom: 20px;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .schedule-table th {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .attraction-type {
+            display: inline-block;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: white;
+            margin-right: 5px;
+        }
+        
+        .type-nature {
+            background-color: #2ecc71;
+        }
+        
+        .type-culture {
+            background-color: #9b59b6;
+        }
+        
+        .type-food {
+            background-color: #e74c3c;
+        }
+        
+        .type-shopping {
+            background-color: #3498db;
+        }
+        
+        .transport-info, .emergency-info {
+            margin-bottom: 15px;
+        }
+        
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .transport-item {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .route-detail {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+            padding-left: 15px;
+            border-left: 2px solid #e67e22;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+        
+        .transport-item .icon {
+            color: #3498db;
+            margin-right: 5px;
+        }
+        
+        .emergency-contacts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .emergency-item {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .emergency-item .icon {
+            color: #e74c3c;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        
+        .dotted-line {
+            border-top: 1px dashed #ddd;
+            margin: 10px 0;
+        }
+        
+        .food-recs, .additional-tips {
+            margin-bottom: 15px;
+        }
+        
+        .food-grid, .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .food-item, .tip-box {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 13px;
+        }
+        
+        .food-item .food-name {
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        
+        .food-item .food-desc {
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        
+        .tip-box .tip-title {
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .checklist {
+            background-color: #eef7ee;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checklist-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        
+        .checklist-item {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .checklist-item i {
+            color: #2ecc71;
+        }
+        
+        /* 增加媒体查询确保在各种屏幕尺寸下正确显示 */
+        @media screen and (max-width: 230mm) {
+            .a4-container {
+                width: 95%;
+                margin: 10px auto;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .food-grid, .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .checklist-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .info-grid, .transport-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .emergency-contacts {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .schedule-table th, .schedule-table td {
+                padding: 6px;
+                font-size: 12px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .food-grid, .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-table {
+                font-size: 11px;
+            }
+            
+            .attraction-type {
+                font-size: 10px;
+                padding: 1px 3px;
+            }
+            
+            .share-button {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            .a4-container {
+                padding: 5mm;
+            }
+        }
+        
+        /* 性能优化：减少重排重绘 */
+        .food-grid, .transport-grid, .emergency-contacts, 
+        .tips-grid, .checklist-items, .schedule-table {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+        
+        .route-links {
+            margin-top: 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 10px 0;
+        }
+        
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .route-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background-color: #e8f4fc;
+            border: 1px solid #b8e0f7;
+            border-radius: 4px;
+            color: #0078d7;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .route-link:hover {
+            background-color: #d0e8f8;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .route-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 添加导航按钮样式 */
+        .nav-button {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background-color: #00B386;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-button:hover {
+            background-color: #009973;
+        }
+        
+        .route-tip {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* 添加印章效果 */
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px dashed #e74c3c;
+            color: #e74c3c;
+            font-weight: bold;
+            opacity: 0.8;
+            transform: rotate(15deg);
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            line-height: 1.2;
+            z-index: 10;
+        }
+        
+        .stamp span {
+            display: block;
+        }
+        
+        /* 分享按钮样式 */
+        .share-button-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .share-button {
+            padding: 10px 20px;
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .share-button:hover {
+            background-color: #8e44ad;
+        }
+        
+        .share-options {
+            position: absolute;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 10px;
+            z-index: 1000;
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .share-options.active {
+            display: block;
+        }
+        
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .share-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .share-option i {
+            font-size: 20px;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .wechat {
+            color: #07c160;
+        }
+        
+        .weibo {
+            color: #e6162d;
+        }
+        
+        .copy {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="a4-container">
+        <header>
+            <div class="decoration left"><i class="fas fa-mountain fa-lg"></i></div>
+            <h1 class="title">云南一日游行程表</h1>
+            <p class="subtitle">昆明精华体验 · 探索春城之美</p>
+            <div class="decoration right"><i class="fas fa-pagoda fa-lg"></i></div>
+        </header>
+        
+        <div class="stamp">
+            <span>云南行程</span>
+            <span>个人定制</span>
+            <span>2025-05-07</span>
+        </div>
+        
+        <div class="info-grid">
+            <div class="weather-info">
+                <h2 class="section-title"><i class="fas fa-cloud-sun"></i> 天气信息</h2>
+                <div class="weather-details">
+                    <div class="weather-item"><i class="fas fa-spinner fa-spin"></i> 正在获取天气信息...</div>
+                </div>
+            </div>
+            
+            <div class="travel-tips">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> 出行提示</h2>
+                <div class="tips-content">
+                    <div class="tip-item"><i class="fas fa-umbrella"></i> 备防晒装备</div>
+                    <div class="tip-item"><i class="fas fa-tshirt"></i> 着轻便衣物</div>
+                    <div class="tip-item"><i class="fas fa-walking"></i> 舒适鞋履</div>
+                    <div class="tip-item"><i class="fas fa-wallet"></i> 准备现金和移动支付</div>
+                    <div class="tip-item"><i class="fas fa-heartbeat"></i> 控制高原活动强度</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="itinerary">
+            <h2 class="section-title"><i class="fas fa-route"></i> 行程安排</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th width="20%">时间</th>
+                        <th width="25%">景点/活动</th>
+                        <th width="35%">详情</th>
+                        <th width="20%">建议</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>08:00-09:30</td>
+                        <td>
+                            <span class="attraction-type type-nature">自然</span>
+                            前往石林景区
+                        </td>
+                        <td>从昆明市区出发，车程约1.5小时</td>
+                        <td>早餐在路上解决</td>
+                    </tr>
+                    <tr>
+                        <td>09:30-11:30</td>
+                        <td>
+                            <span class="attraction-type type-nature">自然</span>
+                            石林景区游览
+                        </td>
+                        <td>世界自然遗产，游览大石林、小石林和阿诗玛石</td>
+                        <td>门票：130元/人<br>观光车：25元/人</td>
+                    </tr>
+                    <tr>
+                        <td>11:30-13:00</td>
+                        <td>
+                            <span class="attraction-type type-food">美食</span>
+                            返回昆明午餐
+                        </td>
+                        <td>在翠湖附近享用云南特色美食（过桥米线、汽锅鸡等）</td>
+                        <td>预算：50-80元/人</td>
+                    </tr>
+                    <tr>
+                        <td>13:30-16:30</td>
+                        <td>
+                            <span class="attraction-type type-culture">文化</span>
+                            云南民族村
+                        </td>
+                        <td>体验云南25个少数民族的建筑、服饰、表演和手工艺品</td>
+                        <td>门票：90元/人<br>下午有表演</td>
+                    </tr>
+                    <tr>
+                        <td>17:00-18:30</td>
+                        <td>
+                            <span class="attraction-type type-nature">自然</span>
+                            翠湖公园
+                        </td>
+                        <td>昆明市中心的城市公园，冬季有大量红嘴鸥栖息</td>
+                        <td>免费景点<br>拍照好去处</td>
+                    </tr>
+                    <tr>
+                        <td>18:30-19:30</td>
+                        <td>
+                            <span class="attraction-type type-culture">文化</span>
+                            金马碧鸡坊
+                        </td>
+                        <td>昆明的标志性建筑，夜景特别美丽</td>
+                        <td>免费景点<br>周边有步行街</td>
+                    </tr>
+                    <tr>
+                        <td>19:30-21:00</td>
+                        <td>
+                            <span class="attraction-type type-food">美食</span>
+                            <span class="attraction-type type-shopping">购物</span>
+                            南屏街
+                        </td>
+                        <td>昆明著名的美食街，品尝各种云南特色小吃</td>
+                        <td>推荐气锅饭、豌豆粉、破酥包</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="food-recs">
+            <h2 class="section-title"><i class="fas fa-utensils"></i> 云南特色美食推荐</h2>
+            <div class="food-grid">
+                <div class="food-item">
+                    <div class="food-name">过桥米线</div>
+                    <div class="food-desc">云南省标志性的特色美食，鲜香醇厚</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-name">汽锅鸡</div>
+                    <div class="food-desc">滋补养生的特色菜，肉质鲜嫩</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-name">宜良烤鸭</div>
+                    <div class="food-desc">外皮酥脆，肉质鲜嫩，香气四溢</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-name">野生菌火锅</div>
+                    <div class="food-desc">云南野生菌种类丰富，鲜美可口</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-name">破酥包</div>
+                    <div class="food-desc">酥脆可口的云南传统小吃</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-name">豌豆粉</div>
+                    <div class="food-desc">清爽可口，独特的云南风味</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="transport-info">
+            <h2 class="section-title"><i class="fas fa-bus"></i> 交通信息</h2>
+            <div class="route-summary" style="margin-bottom: 15px; padding: 10px; background-color: #f0f7ff; border: 1px solid #d0e3ff; border-radius: 5px; font-size: 14px;">
+                <i class="fas fa-info-circle" style="color: #3498db; margin-right: 8px;"></i>
+                <strong>全程行驶总距离：</strong> 约210公里，总驾驶时间约4小时
+                <div style="margin-top: 5px; font-size: 12px; color: #666; padding-left: 24px;">
+                    点击各路段的"启动导航"按钮可在手机上直接打开高德地图进行导航
+                </div>
+            </div>
+            <div class="transport-grid">
+                <div class="transport-item">
+                    <i class="fas fa-car icon"></i> <strong>昆明市区→石林景区：</strong> 约81公里，驾车71分钟
+                    <div class="route-detail">建议路线：朝云街→梁王路→春漫大道→阳春大道→G85银昆高速→G78汕昆高速→石林大道→绿芳路</div>
+                    <a href="https://uri.amap.com/navigation?from=102.833669,24.88149,昆明市区&to=103.325701,24.812964,石林景区&mode=car&policy=1" class="nav-button" target="_blank">
+                        <i class="fas fa-location-arrow"></i> 启动导航
+                    </a>
+                </div>
+                <div class="transport-item">
+                    <i class="fas fa-car icon"></i> <strong>石林景区→翠湖公园：</strong> 约101公里，驾车96分钟
+                    <div class="route-detail">建议路线：G78汕昆高速→S92机场高速→虹桥路→人民东路→景虹街→翠湖南路</div>
+                    <a href="https://uri.amap.com/navigation?from=103.325701,24.812964,石林景区&to=102.703689,25.048474,翠湖公园&mode=car&policy=1" class="nav-button" target="_blank">
+                        <i class="fas fa-location-arrow"></i> 启动导航
+                    </a>
+                </div>
+                <div class="transport-item">
+                    <i class="fas fa-car icon"></i> <strong>翠湖公园→云南民族村：</strong> 约14公里，驾车37分钟
+                    <div class="route-detail">建议路线：翠湖南路→华山西路→五一路→金碧路→西华园隧道→滇池路</div>
+                    <a href="https://uri.amap.com/navigation?from=102.703689,25.048474,翠湖公园&to=102.660893,24.96606,云南民族村&mode=car&policy=1" class="nav-button" target="_blank">
+                        <i class="fas fa-location-arrow"></i> 启动导航
+                    </a>
+                </div>
+                <div class="transport-item">
+                    <i class="fas fa-car icon"></i> <strong>云南民族村→金马碧鸡坊：</strong> 约13公里，驾车30分钟
+                    <div class="route-detail">建议路线：民族村北路→红塔西路→滇池路→西昌路→土桥路→东寺街→鱼课司街→金马巷</div>
+                    <a href="https://uri.amap.com/navigation?from=102.660893,24.96606,云南民族村&to=102.710268,25.03286,金马碧鸡坊&mode=car&policy=1" class="nav-button" target="_blank">
+                        <i class="fas fa-location-arrow"></i> 启动导航
+                    </a>
+                </div>
+                <div class="transport-item">
+                    <i class="fas fa-car icon"></i> <strong>金马碧鸡坊→南屏街：</strong> 约1.5公里，步行10分钟
+                    <div class="route-detail">建议路线：金马巷→鱼课司街→书林街→金碧路→青年路→东风东路</div>
+                    <a href="https://uri.amap.com/navigation?from=102.710268,25.03286,金马碧鸡坊&to=102.713746,25.037921,南屏街&mode=walk&policy=1" class="nav-button" target="_blank">
+                        <i class="fas fa-walking"></i> 步行导航
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="checklist">
+            <h2 class="section-title"><i class="fas fa-clipboard-list"></i> 出行装备检查清单</h2>
+            <div class="checklist-items">
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 身份证/护照</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 现金/银行卡</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 手机/充电宝</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 防晒霜/帽子</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 舒适鞋子</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 水杯</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 零食/干粮</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 常用药品</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 相机/手机</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 口罩</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 湿巾/纸巾</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> 小背包</div>
+            </div>
+        </div>
+        
+        <div class="additional-tips">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> 实用贴士</h2>
+            <div class="tips-grid">
+                <div class="tip-box">
+                    <div class="tip-title">石林游览</div>
+                    <div>游客较多，建议上午游览，避开团队游客高峰，注意防晒</div>
+                </div>
+                <div class="tip-box">
+                    <div class="tip-title">民族村表演</div>
+                    <div>下午有定时民族歌舞表演，提前查询时间表以便合理安排</div>
+                </div>
+                <div class="tip-box">
+                    <div class="tip-title">翠湖公园</div>
+                    <div>冬季有红嘴鸥，可以购买鸥食喂食，记得避免触碰水鸟</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="emergency-info">
+            <h2 class="section-title"><i class="fas fa-phone-alt"></i> 紧急联系信息</h2>
+            <div class="emergency-contacts">
+                <div class="emergency-item">
+                    <i class="fas fa-ambulance icon"></i>
+                    <div>
+                        <div><strong>急救电话</strong></div>
+                        <div>120</div>
+                    </div>
+                </div>
+                <div class="emergency-item">
+                    <i class="fas fa-car-crash icon"></i>
+                    <div>
+                        <div><strong>报警电话</strong></div>
+                        <div>110</div>
+                    </div>
+                </div>
+                <div class="emergency-item">
+                    <i class="fas fa-info-circle icon"></i>
+                    <div>
+                        <div><strong>旅游咨询</strong></div>
+                        <div>0871-12301</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dotted-line"></div>
+        
+        <div class="share-button-container">
+            <div style="position: relative;">
+                <button class="share-button" id="shareButton">
+                    <i class="fas fa-share-alt"></i> 分享行程
+                </button>
+                <div class="share-options" id="shareOptions">
+                    <div class="share-option wechat-share">
+                        <i class="fab fa-weixin wechat"></i>
+                        <span>分享到微信</span>
+                    </div>
+                    <div class="share-option weibo-share">
+                        <i class="fab fa-weibo weibo"></i>
+                        <span>分享到微博</span>
+                    </div>
+                    <div class="share-option copy-link">
+                        <i class="fas fa-link copy"></i>
+                        <span>复制链接</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>祝您旅途愉快！更多云南旅游信息，请访问云南省旅游网站或关注"云南旅游"微信公众号</p>
+            <p>行程表制作日期：2025年5月7日 | 如有更改，恕不另行通知</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取实时天气信息
+            async function getWeatherInfo() {
+                try {
+                    const weatherContainer = document.querySelector('.weather-details');
+                    if (weatherContainer) {
+                        weatherContainer.innerHTML = '<div class="weather-item"><i class="fas fa-spinner fa-spin"></i> 正在获取天气信息...</div>';
+                        
+                        // 使用mocks模拟API响应
+                        setTimeout(() => {
+                            const weatherData = {
+                                dayTemp: '26°C',
+                                nightTemp: '15°C',
+                                weather: '晴转多云',
+                                wind: '东南风2-3级',
+                                humidity: '55%',
+                                uvIndex: '中等'
+                            };
+                            
+                            weatherContainer.innerHTML = `
+                                <div class="weather-item"><i class="fas fa-temperature-high"></i> 白天：${weatherData.weather}，${weatherData.dayTemp}</div>
+                                <div class="weather-item"><i class="fas fa-temperature-low"></i> 夜间：多云，${weatherData.nightTemp}</div>
+                                <div class="weather-item"><i class="fas fa-wind"></i> ${weatherData.wind}</div>
+                                <div class="weather-item"><i class="fas fa-tint"></i> 湿度：${weatherData.humidity}</div>
+                                <div class="weather-item"><i class="fas fa-sun"></i> 紫外线：${weatherData.uvIndex}</div>
+                                <div class="weather-item" style="width: 100%; font-size: 11px; color: #666; margin-top: 5px;">
+                                    <i class="fas fa-info-circle"></i> 天气信息更新时间：${new Date().toLocaleString()}
+                                </div>
+                            `;
+                        }, 1000);
+                    }
+                } catch (error) {
+                    console.error('获取天气失败:', error);
+                }
+            }
+            
+            // 调用天气API
+            getWeatherInfo();
+            
+            // 为装备清单添加交互式勾选
+            const checklistItems = document.querySelectorAll('.checklist-item');
+            checklistItems.forEach(item => {
+                const icon = item.querySelector('i');
+                item.style.cursor = 'pointer';
+                
+                item.addEventListener('click', function() {
+                    if (icon.classList.contains('fa-check-circle')) {
+                        icon.classList.remove('fa-check-circle');
+                        icon.classList.add('fa-circle');
+                        icon.style.color = '#ccc';
+                        item.style.color = '#999';
+                    } else {
+                        icon.classList.remove('fa-circle');
+                        icon.classList.add('fa-check-circle');
+                        icon.style.color = '#2ecc71';
+                        item.style.color = '';
+                    }
+                });
+            });
+            
+            // 添加分享功能
+            const shareButton = document.getElementById('shareButton');
+            const shareOptions = document.getElementById('shareOptions');
+            
+            shareButton.addEventListener('click', function(event) {
+                shareOptions.classList.toggle('active');
+                event.stopPropagation();
+            });
+            
+            // 点击页面其他地方关闭分享选项
+            document.addEventListener('click', function(event) {
+                if (!shareButton.contains(event.target) && !shareOptions.contains(event.target)) {
+                    shareOptions.classList.remove('active');
+                }
+            });
+            
+            // 添加分享选项点击事件
+            const wechatShare = document.querySelector('.wechat-share');
+            const weiboShare = document.querySelector('.weibo-share');
+            const copyLink = document.querySelector('.copy-link');
+            
+            wechatShare.addEventListener('click', function() {
+                // 实际项目中可以使用微信JS SDK
+                alert('请打开微信扫一扫，扫描屏幕上的二维码进行分享');
+                shareOptions.classList.remove('active');
+            });
+            
+            weiboShare.addEventListener('click', function() {
+                // 实际项目中可以使用微博分享API
+                const shareUrl = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent('我的云南一日游行程表，分享给大家参考！');
+                window.open(`https://service.weibo.com/share/share.php?url=${shareUrl}&title=${title}`);
+                shareOptions.classList.remove('active');
+            });
+            
+            copyLink.addEventListener('click', function() {
+                const tempInput = document.createElement('input');
+                document.body.appendChild(tempInput);
+                tempInput.value = window.location.href;
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                
+                // 显示复制成功提示
+                const copiedNotice = document.createElement('div');
+                copiedNotice.textContent = '✓ 链接已复制';
+                copiedNotice.style.position = 'absolute';
+                copiedNotice.style.top = '-40px';
+                copiedNotice.style.left = '0';
+                copiedNotice.style.padding = '10px';
+                copiedNotice.style.backgroundColor = '#2ecc71';
+                copiedNotice.style.color = 'white';
+                copiedNotice.style.borderRadius = '5px';
+                copiedNotice.style.zIndex = '1000';
+                
+                shareButton.parentNode.appendChild(copiedNotice);
+                
+                setTimeout(() => {
+                    copiedNotice.remove();
+                }, 2000);
+                
+                shareOptions.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 
